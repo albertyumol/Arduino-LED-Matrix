@@ -1,27 +1,25 @@
+/*============================ albert yumol ===================================//
+
+Demonstration on how to use 8x8 LED matrix with Arduino and MAX72XX
+ 
+ *pin 12 is connected to the DataIn 
+ *pin 11 is connected to the CLK 
+ *pin 10 is connected to LOAD 
+ 
+You need to install the LedControl.h library.
+//============================ albert yumol ===================================*/
+
 #include <avr/pgmspace.h>
 #include <LedControl.h>
- 
- 
+
 const int numDevices = 4;      // number of MAX7219s used
 const long scrollDelay = 100;   // adjust scrolling speed
-
-/*
- Now we need a LedControl to work with.
- ***** These pin numbers will probably not work with your hardware *****
- pin 12 is connected to the DataIn 
- pin 11 is connected to the CLK 
- pin 10 is connected to LOAD 
- We have only a single MAX72XX.
- */
  
 unsigned long bufferLong [14] = {0};
- 
- 
+
 LedControl lc=LedControl(12,11,10,numDevices);
- 
- 
+
 const unsigned char scrollText[] PROGMEM ={"   SCIENTISTS UNITE, RESIST TYRANNY!  ~~~  "};
- 
  
 void setup(){
 for (int x=0; x<numDevices; x++){
